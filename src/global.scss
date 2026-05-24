@@ -32,6 +32,17 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+.auth-card {text-align:center;color:#fff;padding:50px 0;background:linear-gradient(135deg, #0f5132, #198754);
+    h2{margin:0;padding:0;}
+    p {margin:0;}
+}
+
+.formgroup {padding:16px;
+    .inputfield {margin:15px 0;}
+    input {width:100%;padding:10px;border-radius:5px;outline:none;background:transparent;border:1px solid #ddd;}
+}
