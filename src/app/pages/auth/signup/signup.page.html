@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <div class="auth-card">
+    <h2>Create Account</h2>
+    <p>Join our farming community 🌱</p>
+  </div>
+  <form [formGroup]="signupForm">
+    <ion-list>
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="name" placeholder="Name">
+          <div slot="label">Name <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" type="email" formControlName="email" placeholder="Email">
+          <div slot="label">Email</div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" type="tel" maxlength="10" formControlName="mobile" placeholder="Mobile">
+          <div slot="label">Mobile <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" type="password" formControlName="password" placeholder="Password">
+          <div slot="label">Password <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div style="margin:15px;"><ion-button fill="outline" expand="block" (click)="onSubmit()">Register</ion-button></div>
+  <p style="text-align:center;">Already have an account? <a routerLink="/tabs/login">Login</a></p>
+
+</ion-content>
