@@ -1,20 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Auth } from 'src/app/shared/services/auth';
 
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.page.html',
   styleUrls: ['./forget-password.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule,IonicModule, RouterModule, ReactiveFormsModule]
 })
 export class ForgetPasswordPage implements OnInit {
 
-  constructor() { }
+  resetForm: FormGroup;
+  hidePassword = true;
+  hideConfirmPassword = true;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private auth: Auth) {
+    this.resetForm = this.fb.group({
+      email: ['', [Validators.email]],
+    });
   }
 
+  ngOnInit() { }
+
+  onSubmit() {
+    if (this.resetForm.invalid) { this.resetForm.markAllAsTouched();
+      return;
+    }
+    this.auth.resetPassword(this.resetForm.value).subscribe(res => {
+      alert('Password reset instructions sent to your email.');
+      this.resetForm.reset();
+    });
+
+  }
 }
